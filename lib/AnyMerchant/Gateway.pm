@@ -106,7 +106,8 @@ __END__
 
 =head1 DESCRIPTION
 
-This role defines the interface for all C<AnyMerchant::Gateway::* classes>.
+This role defines the interface for C<AnyMerchant::Gateway::* classes>.
+It also provides helper methods to communicate via http with merchant services.
 
 =head1 METHODS
 
@@ -118,25 +119,25 @@ It may be a proper object or a hashref.
 
 =head2 charge
 
-    charge($amount, $source, %params)
+    charge(amount => $amount, source => $card, %params)
 
 Charge a credit card or debit a bank account.
 
 =head2 authorize
 
-    authorize($amount, $source, %params)
+    authorize(amount => $amount, source => $card, %params)
 
 Authorize a transaction.
 
 =head2 capture
 
-    capture($amount, $id, %params)
+    capture(amount => $amount, authorization => $id_or_uri, %params)
 
 Capture an authorized transaction.
 
 =head2 credit
 
-    credit($amount, $target, %params)
+    credit(amount => $amount, target => $bank, %params)
 
 Credit account.
 
